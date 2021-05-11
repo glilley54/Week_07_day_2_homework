@@ -14,5 +14,11 @@ describe('Calculator', () => {
     expect(runningTotal).toHaveTextContent('4');
     
   })
+
+  it('should be able to add 1 to 4 and get 5', () => {
+    const add = container.getByTestId("#add");
+    expect(add.text()).toEqual('5');
+  });
+
 })
 
