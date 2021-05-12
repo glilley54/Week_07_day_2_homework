@@ -14,6 +14,15 @@ describe("Calculator", () => {
     cy.get('#number9').click();
     cy.get('.display').should('contain', '759')
 
-  
+  });
+
+  it('should allow arithmetical operations to update the display with the result of the operation', () => {
+    cy.get('#number7').click();
+    cy.get('#operator_add').click();
+    cy.get('#number7').click();
+    cy.get('#operator_equals').click();
+    cy.get('.display').should('contain', '14')
+
   })
+
 })
