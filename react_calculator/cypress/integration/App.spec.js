@@ -39,7 +39,7 @@ describe("Calculator", () => {
 
   })
 
-  it('output as expected for a range of numbers i.e negative result', () =>{
+  it('output as expected for a negative result', () =>{
     cy.get('#number2').click()
     cy.get('#number0').click()
     cy.get('#operator_subtract').click();
@@ -49,6 +49,32 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '-12')
 
   })
+
+  it('output as expected for large numbers', () =>{
+    cy.get('#number2').click()
+    cy.get('#number0').click()
+    cy.get('#number0').click()
+    cy.get('#number0').click()
+    cy.get('#operator_multiply').click();
+    cy.get('#number3').click()
+    cy.get('#number2').click()
+    cy.get('#number5').click()
+    cy.get('#number2').click()
+    cy.get('#operator_equals').click();
+    cy.get('.display').should('contain', '6504')
+
+
+})
+it('output as expected for a decimal result', () =>{
+  cy.get('#number2').click()
+  cy.get('#number2').click()
+  cy.get('#operator_divide').click();
+  cy.get('#number5').click()
+  cy.get('#operator_equals').click();
+  cy.get('.display').should('contain', '4.4')
+
+})
+
 
 
 })
