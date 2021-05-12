@@ -39,7 +39,7 @@ describe("Calculator", () => {
 
   })
 
-  it('output as expected for a negative result', () =>{
+  it('should show correct output as expected for a negative result', () =>{
     cy.get('#number2').click()
     cy.get('#number0').click()
     cy.get('#operator_subtract').click();
@@ -50,7 +50,7 @@ describe("Calculator", () => {
 
   })
 
-  it('output as expected for large numbers', () =>{
+  it('should show correct output as expected for large numbers', () =>{
     cy.get('#number2').click()
     cy.get('#number0').click()
     cy.get('#number0').click()
@@ -65,7 +65,7 @@ describe("Calculator", () => {
 
 
 })
-it('output as expected for a decimal result', () =>{
+it('should show correct output as expected for a decimal result', () =>{
   cy.get('#number2').click()
   cy.get('#number2').click()
   cy.get('#operator_divide').click();
@@ -75,6 +75,16 @@ it('output as expected for a decimal result', () =>{
 
 })
 
+it('should show correct output dividing by zero', () =>{
+  cy.get('#number3').click()
+  cy.get('#number6').click()
+  cy.get('#operator_divide').click();
+  cy.get('#number0').click()
+  cy.get('#operator_equals').click();
+  cy.get('.display').should('contain', '0')
 
+
+
+})
 
 })
