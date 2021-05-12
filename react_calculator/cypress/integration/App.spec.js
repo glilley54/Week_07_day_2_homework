@@ -24,5 +24,31 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '14')
 
   })
+  it('should allow multiple operations be chained together', () => {
+    cy.get('#number9').click();
+    cy.get('#operator_add').click();
+    cy.get('#number1').click();
+    cy.get('#operator_divide').click();
+    cy.get('#number2').click();
+    cy.get('#operator_equals').click(); 
+    cy.get('#operator_add').click();
+    cy.get('#number1').click();
+    cy.get('#operator_equals').click(); 
+    cy.get('.display').should('contain', '1.5')
+
+
+  })
+
+  it('output as expected for a range of numbers i.e negative result', () =>{
+    cy.get('#number2').click()
+    cy.get('#number0').click()
+    cy.get('#operator_subtract').click();
+    cy.get('#number3').click()
+    cy.get('#number2').click()
+    cy.get('#operator_equals').click();
+    cy.get('.display').should('contain', '-12')
+
+  })
+
 
 })
