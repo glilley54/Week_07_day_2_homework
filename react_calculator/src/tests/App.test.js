@@ -55,11 +55,55 @@ describe('Calculator', () => {
     fireEvent.click(button5);
     fireEvent.click(buttonEquals);
     expect(runningTotal).toHaveTextContent('15');
-    
+
   });
 
+  it('should divide 21 by 7 and get 3', () => {
+    const button2 = container.getByTestId('number2');
+    const button1 = container.getByTestId('number1');
+    const buttonDivide = container.getByTestId('divide');
+    const button7 = container.getByTestId('number7');
+    const buttonEquals = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button2);
+    fireEvent.click(button1);
+    fireEvent.click(buttonDivide);
+    fireEvent.click(button7);
+    fireEvent.click(buttonEquals);
+    expect(runningTotal).toHaveTextContent('3');
+
+
+  });
+  
+  it('should concatenate multiple number button clicks', () => {
+    const button5 = container.getByTestId('number5');
+    const button9 = container.getByTestId('number9');
+    const button4 = container.getByTestId('number4');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button5);
+    fireEvent.click(button9);
+    fireEvent.click(button4);
+    expect(runningTotal).toHaveTextContent('594');
+
+
+  });
+
+  it('should chain multiple operations together', () => {
+    const button9 = container.getByTestId('number9');
+    const buttonAdd = container.getByTestId('add');
+    const button1 = container.getByTestId('number1');
+    const buttonDivide = container.getByTestId('divide');
+    const button5 = container.getByTestId('number5');
+    const buttonEquals = container.getByTestId('equals');
+    const runningTotal = container.getByTestId('running-total');
+    fireEvent.click(button9);
+    fireEvent.click(buttonAdd);
+    fireEvent.click(button1);
+    fireEvent.click(buttonDivide);
+    fireEvent.click(button5);
+    fireEvent.click(buttonEquals);
+    expect(runningTotal).toHaveTextContent('2');
+
+});
 
 })
-    
-
-
